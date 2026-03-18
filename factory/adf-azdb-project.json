@@ -1,0 +1,9 @@
+{
+	"name": "adf-azdb-project",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "3b522599-ce84-4852-90fb-92b0833f6399",
+		"tenantId": "45157894-825a-4cf0-91b9-54e6da6895af"
+	}
+}
