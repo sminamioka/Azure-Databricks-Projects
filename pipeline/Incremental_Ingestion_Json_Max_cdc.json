@@ -46,36 +46,8 @@
 							"type": "ParquetWriteSettings"
 						}
 					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "Azure_Sql",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "Parquet_Dynamic",
-						"type": "DatasetReference",
-						"parameters": {
-							"container": "bronze",
-							"folder": "user",
-							"file": {
-								"value": "@concat(pipeline().parameters.table,'_',variables('vCurrent'))",
-								"type": "Expression"
-							}
-						}
-					}
-				]
+					"enableStaging": false
+				}
 			},
 			{
 				"name": "Last_cdc",
@@ -99,15 +71,6 @@
 						},
 						"formatSettings": {
 							"type": "JsonReadSettings"
-						}
-					},
-					"dataset": {
-						"referenceName": "Json_dynamic",
-						"type": "DatasetReference",
-						"parameters": {
-							"container": "bronze",
-							"folder": "cdc",
-							"file": "cdc.json"
 						}
 					}
 				}
@@ -179,29 +142,7 @@
 						}
 					},
 					"enableStaging": false
-				},
-				"inputs": [
-					{
-						"referenceName": "Json_dynamic",
-						"type": "DatasetReference",
-						"parameters": {
-							"container": "bronze",
-							"folder": "cdc",
-							"file": "empty.json"
-						}
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "Json_dynamic",
-						"type": "DatasetReference",
-						"parameters": {
-							"container": "bronze",
-							"folder": "cdc",
-							"file": "cdc.json"
-						}
-					}
-				]
+				}
 			},
 			{
 				"name": "Max cdc date",
@@ -222,10 +163,6 @@
 					"secureInput": false
 				},
 				"userProperties": [],
-				"linkedServiceName": {
-					"referenceName": "Azure_SQL",
-					"type": "LinkedServiceReference"
-				},
 				"typeProperties": {
 					"scripts": [
 						{
