@@ -1,0 +1,30 @@
+{
+	"name": "Src_GitHub",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_GitHub",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"pFile_Name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": {
+					"value": "anshlambagit/Azure-DE-Project-Resources/refs/heads/main/Raw%20Data/@{dataset().pFile_Name}",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
