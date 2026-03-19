@@ -173,7 +173,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Dest_Azure_SQL",
+						"referenceName": "Src_Azure_SQL",
 						"type": "DatasetReference"
 					}
 				]
