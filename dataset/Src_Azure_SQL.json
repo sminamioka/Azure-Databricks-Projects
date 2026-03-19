@@ -1,9 +1,14 @@
 {
-	"name": "Dest_Azure_SQL",
+	"name": "Src_Azure_SQL",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "LS_Azure_SQL",
 			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"table_name": {
+				"type": "string"
+			}
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
@@ -56,7 +61,10 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "source_cars_data"
+			"table": {
+				"value": "@dataset().table_name",
+				"type": "Expression"
+			}
 		}
 	}
 }
